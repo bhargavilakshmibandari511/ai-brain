@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "AI Brain — YouTube Summarizer",
+  "version": "1.0",
+  "description": "Auto-summarize YouTube videos using your local AI Brain backend",
+  "permissions": [
+    "activeTab",
+    "sidePanel",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://www.youtube.com/*",
+    "http://localhost:8000/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "side_panel": {
+    "default_path": "side_panel/index.html"
+  },
+  "action": {
+    "default_title": "Open AI Brain"
+  },
+  "icons": {
+    "48": "icon.png"
+  }
+}
